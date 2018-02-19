@@ -12,7 +12,7 @@ class AcceptanceTest {
 
     @Test@Ignore
     fun allStrikes() {
-        assertEvaluationOnRolls("X X X X X X X X X X X X", 300)
+        assertEvaluationOnRolls("X X X X X X X X X XXX", 300)
     }
 
     fun ninesAndMisses() {

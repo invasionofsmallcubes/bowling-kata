@@ -2,6 +2,7 @@ package com.invasionofsmallcubes.bowling
 
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Ignore
 import org.junit.Test
 
 class BowlingGameTest {
@@ -35,6 +36,13 @@ class BowlingGameTest {
     fun aStrike() {
         evaluateScore("X 51", 22)
         evaluateScore("X 61", 24)
+    }
+
+    @Test
+    @Ignore
+    fun lastFrame() {
+        evaluateScore("51 6-", 12)
+        evaluateScore("51 XXX", 36)
     }
 
     private fun evaluateScore(sequenceOfRolls: String, score: Int) {
