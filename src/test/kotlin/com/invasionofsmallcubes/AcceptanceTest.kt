@@ -10,16 +10,17 @@ class AcceptanceTest {
 
     private val bowlingGame = BowlingGame()
 
-    @Test@Ignore
+    @Test
     fun allStrikes() {
         assertEvaluationOnRolls("X X X X X X X X X XXX", 300)
     }
 
+    @Test
     fun ninesAndMisses() {
         assertEvaluationOnRolls("9- 9- 9- 9- 9- 9- 9- 9- 9- 9-", 90)
     }
 
-    @Test@Ignore
+    @Test
     fun fivesAndSpares() {
         assertEvaluationOnRolls("5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5", 150)
     }
