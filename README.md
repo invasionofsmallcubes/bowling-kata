@@ -1,4 +1,4 @@
-##Bowling Kata
+### Bowling Kata
 
 *Create a program, which, given a valid sequence of rolls for one line of American Ten-Pin Bowling, produces the total score for the game.*
 
@@ -28,7 +28,7 @@ In the final frame you get a **bonus throw** if you make a **strike** or a **spa
 
 [source](http://www.topendsports.com/sport/tenpin/scoring.htm)
 
-####Acceptance Tests
+#### Acceptance Tests
 - `X X X X X X X X X X X X` (12 rolls: 12 strikes) = 10 frames * 30 points = 300
 - `9- 9- 9- 9- 9- 9- 9- 9- 9- 9-` (20 rolls: 10 pairs of 9 and miss) = 10 frames * 9 points = 90
 - `5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5` (21 rolls: 10 pairs of 5 and spare, with a final 5) = 10 frames * 15 points = 150
