@@ -1,6 +1,6 @@
-package com.invasionofsmallcubes.bowling
+package com.invasionofsmallcubes.bowling.frame
 
-import com.invasionofsmallcubes.bowling.FrameObject.Frame
+import com.invasionofsmallcubes.bowling.frame.FrameObject.Frame
 
 object FrameFactory {
 

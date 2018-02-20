@@ -1,4 +1,4 @@
-package com.invasionofsmallcubes.bowling
+package com.invasionofsmallcubes.bowling.frame
 
 object FrameObject {
 
