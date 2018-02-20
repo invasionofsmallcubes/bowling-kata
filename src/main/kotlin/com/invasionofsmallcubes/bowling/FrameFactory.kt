@@ -9,8 +9,6 @@ object FrameFactory {
 
     private const val NEXT_FRAME = 1
     private const val NEXT_TWO_FRAMES = 2
-    private const val NEXT_DELIVERY = 1
-    private const val NEXT_TWO_DELIVERIES = 1
 
     fun createFrame(index: Int, frames: List<String>, currentFrames: String, sequenceOfRolls: String): Frame {
         return when {
@@ -27,14 +25,14 @@ object FrameFactory {
     }
 
     private fun calculateStrikesDelivery(currentFrame: String, index: Int, frames: List<String>, sequenceOfRolls: String): Pair<Char, Char> {
-        return if (isLastFrame(index, frames, currentFrame)) Pair(currentFrame[NEXT_DELIVERY], currentFrame[NEXT_TWO_DELIVERIES]) else {
+        return if (isLastFrame(index, frames, currentFrame)) Pair(currentFrame[1], currentFrame[2]) else {
             val position = if (frames[index + NEXT_FRAME].length == 2) ((index + NEXT_FRAME) * 2) + 1 else ((index + NEXT_TWO_FRAMES) * 2)
             Pair(sequenceOfRolls[(index + 1) * 2], sequenceOfRolls[position])
         }
     }
 
     private fun calculateSpareDelivery(currentFrame: String, index: Int, frames: List<String>, sequenceOfRolls: String): Char {
-        return if (isLastFrame(index, frames, currentFrame)) currentFrame[NEXT_TWO_DELIVERIES] else sequenceOfRolls[(index + NEXT_FRAME) * 3]
+        return if (isLastFrame(index, frames, currentFrame)) currentFrame[2] else sequenceOfRolls[(index + 1) * 3]
     }
 
     private fun isLastFrame(index: Int, frames: List<String>, it: String) =
