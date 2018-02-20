@@ -1,5 +1,7 @@
 package com.invasionofsmallcubes.bowling
 
+import com.invasionofsmallcubes.bowling.FrameFactory.createFrame
+
 class BowlingGame {
 
     private val EMPTY_VALUE = ""
@@ -12,7 +14,7 @@ class BowlingGame {
 
         return (frames + EMPTY_VALUE)
                 .zipWithNext()
-                .map { (curr, next) -> FrameFactory.createFrame(curr, next) }
+                .map { (curr, next) -> createFrame(curr, next) }
                 .fold(0, { acc, frame -> acc + frame.score() })
 
     }

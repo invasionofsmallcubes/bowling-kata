@@ -1,8 +1,11 @@
 package com.invasionofsmallcubes.bowling
 
-class Spare(nextShot: String) : FrameObject.Frame {
+import com.invasionofsmallcubes.bowling.FrameObject.Frame
+import com.invasionofsmallcubes.bowling.FrameObject.scoreByDelivery
 
-    private val nextShot =  FrameObject.scoreByDelivery[nextShot[0]]!!
+class Spare(nextShot: String) : Frame {
+
+    private val nextShot =  scoreByDelivery[nextShot[0]]!!
 
     override fun score(): Int = 10 + nextShot
 
