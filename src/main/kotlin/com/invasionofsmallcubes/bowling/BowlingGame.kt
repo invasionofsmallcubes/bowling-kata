@@ -7,8 +7,9 @@ class BowlingGame {
         val frames = sequenceOfRolls
                 .split(" ")
 
-        return frames
-                .mapIndexed { index, it -> FrameFactory.createFrame(index, frames, it, sequenceOfRolls) }
+        return (frames + "")
+                .zipWithNext()
+                .map { (curr, next) -> FrameFactory.createFrame(curr, next) }
                 .fold(0, { acc, frame -> acc + frame.score() })
 
     }

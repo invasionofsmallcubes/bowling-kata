@@ -7,34 +7,21 @@ object FrameFactory {
             '9' to 9, 'X' to 10, '/' to 10, '-' to 0
     )
 
-    private const val NEXT_FRAME = 1
-    private const val NEXT_TWO_FRAMES = 2
+    private const val LAST_FRAME = ""
 
-    fun createFrame(index: Int, frames: List<String>, currentFrames: String, sequenceOfRolls: String): Frame {
+    fun createFrame(currentFrame: String, nextFrame: String) : Frame.Frame {
+
+        val next = if(nextFrame == LAST_FRAME) currentFrame else nextFrame
+
         return when {
-            currentFrames.contains("/") -> {
-                val nextSpareDelivery = calculateSpareDelivery(currentFrames, index, frames, sequenceOfRolls)
-                Spare(scoreByDelivery[nextSpareDelivery]!!)
+            currentFrame.contains("/") -> {
+                Spare(next)
             }
-            currentFrames.contains("X") -> {
-                val (nextFirstStrikeDelivery, nextStrikeDelivery) = calculateStrikesDelivery(currentFrames, index, frames, sequenceOfRolls)
-                Strike(listOf(scoreByDelivery[nextFirstStrikeDelivery]!!, scoreByDelivery[nextStrikeDelivery]!!))
+            currentFrame.contains("X") -> {
+                Strike(next)
             }
-            else -> Normal(currentFrames.map { f -> scoreByDelivery[f]!! })
+            else -> Normal(currentFrame.map { f -> scoreByDelivery[f]!! })
         }
-    }
 
-    private fun calculateStrikesDelivery(currentFrame: String, index: Int, frames: List<String>, sequenceOfRolls: String): Pair<Char, Char> {
-        return if (isLastFrame(index, frames, currentFrame)) Pair(currentFrame[1], currentFrame[2]) else {
-            val position = if (frames[index + NEXT_FRAME].length == 2) ((index + NEXT_FRAME) * 2) + 1 else ((index + NEXT_TWO_FRAMES) * 2)
-            Pair(sequenceOfRolls[(index + 1) * 2], sequenceOfRolls[position])
-        }
     }
-
-    private fun calculateSpareDelivery(currentFrame: String, index: Int, frames: List<String>, sequenceOfRolls: String): Char {
-        return if (isLastFrame(index, frames, currentFrame)) currentFrame[2] else sequenceOfRolls[(index + 1) * 3]
-    }
-
-    private fun isLastFrame(index: Int, frames: List<String>, it: String) =
-            (index == frames.size - 1) && (it.length == 3)
 }
