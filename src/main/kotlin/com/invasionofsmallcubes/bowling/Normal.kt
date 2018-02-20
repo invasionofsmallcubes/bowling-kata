@@ -1,11 +1,6 @@
 package com.invasionofsmallcubes.bowling
 
-class Normal(private val shots: String) : Frame {
-    override fun score(): Int {
-        var score = 0
-        shots
-                .filter { c -> c != '-' }
-                .forEach { c -> score += c.toString().toInt() }
-        return score
-    }
+class Normal(private val shots: List<Int>) : Frame {
+    override fun score(): Int = shots.fold(0, { acc, score -> acc + score })
+
 }
