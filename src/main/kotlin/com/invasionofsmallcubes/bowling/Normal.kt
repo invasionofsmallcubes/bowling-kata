@@ -1,5 +1,5 @@
 package com.invasionofsmallcubes.bowling
 
-class Normal(private val shots: List<Int>) : Frame.Frame {
-    override fun score(): Int = shots.fold(0, { acc, score -> acc + score })
+class Normal(private val shots: String) : FrameObject.Frame {
+    override fun score(): Int = shots.fold(0, { acc, score -> acc + FrameObject.scoreByDelivery[score]!! })
 }

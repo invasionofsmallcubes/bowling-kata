@@ -9,7 +9,7 @@ object FrameFactory {
 
     private const val LAST_FRAME = ""
 
-    fun createFrame(currentFrame: String, nextFrame: String) : Frame.Frame {
+    fun createFrame(currentFrame: String, nextFrame: String) : FrameObject.Frame {
 
         val next = if(nextFrame == LAST_FRAME) currentFrame else nextFrame
 
@@ -20,7 +20,7 @@ object FrameFactory {
             currentFrame.contains("X") -> {
                 Strike(next)
             }
-            else -> Normal(currentFrame.map { f -> scoreByDelivery[f]!! })
+            else -> Normal(currentFrame)
         }
 
     }
